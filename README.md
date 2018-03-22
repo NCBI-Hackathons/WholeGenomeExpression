@@ -23,9 +23,14 @@ Viewing RNA expression on the gene and genome level using sequencing reads in th
 ## Why should we solve it?
 *The amount of NGS data stored in the Sequence Read Archive (SRA) data-base is growing rapidly. However, many researchers who are interested in this data do not have experience with the tools necessary to analyze it effectively. viSRA increases the utility and return on investment of NGS projects by making the data more accessible to a wider range of individuals.*
 
-# What is <this software>?
+# What is viSRAtoo?
 
-Overview Diagram
+viSRA is a tool to compare two sets of NGS data for differences in gene expression. For example, if the user is interested in how gene expression varies in the liver after treatment for HCV, they may be interested in looking at a BioProject record that links the runs for a relevant experiment, such as https://www.ncbi.nlm.nih.gov/bioproject/328986. From that page, you can select the link for SRA experiments, then view the results in SRA Run Selector, which displays a table including the SRA run accessions and treatment conditions, https://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=328986. You will also need a list of up to 10 gene names to use for viewing and outputting plots and graphs.
+
+viSRAtoo runs on R Shiny, which calls the command line tools below for upstream processing.  The resulting tables and graphs are displayed on the web-based Shiny GUI.
+
+## Processing RNA-seq data
+The first step is to build a blast database for your reference genome using MagicBLAST. MagicBLAST produces a SAM file, which is processed by separate scripts encoding samtools commands. The SAM file is converted to a BAM file, which is sorted and indexed.  The Subread tool featureCounts is then used to produce gene counts, which are then normalized with TMM and converted to gene expression in R with the packages limma and edgeR. The resulting normalized gene expression, dot plots, violin plots, and heat map are displayed on the GUI.
 
 # How to use <this software>
 
