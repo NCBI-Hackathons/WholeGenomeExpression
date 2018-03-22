@@ -1,0 +1,12 @@
+
+install.packages('shiny', repos = "http://cran.us.r-project.org")
+install.packages('shinyjs', repos = "http://cran.us.r-project.org")
+install.packages('DT', repos = "http://cran.us.r-project.org")
+install.packages('pheatmap', repos = "http://cran.us.r-project.org")
+install.packages('ggplot2', repos = "http://cran.us.r-project.org")
+install.packages('dplyr', repos = "http://cran.us.r-project.org")
+install.packages('reshape2', repos = "http://cran.us.r-project.org")
+install.packages('plotly', repos = "http://cran.us.r-project.org")
+source("https://bioconductor.org/biocLite.R")
+biocLite('Rsubread')
+biocLite('limma')
