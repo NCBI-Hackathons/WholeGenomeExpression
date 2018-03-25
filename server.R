@@ -63,7 +63,7 @@ shinyServer(function(input, output) {
           v <- voom(dge)
         })
 
-          dat <- v$E
+          dat <- counts()
           listGenes = read.delim(input$listOfGenes$datapath, sep = '\n', header = F)
           for (i in 1:length(listGenes[,1])) {
             geneName = listGenes[i,1]
