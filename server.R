@@ -61,8 +61,7 @@ shinyServer(function(input, output) {
           dge = DGEList(counts_all)
           dge = calcNormFactors(dge, method='TMM')
           v <- voom(dge)
-        })
-
+        
           dat <- counts()
           listGenes = read.delim(input$listOfGenes$datapath, sep = '\n', header = F)
           for (i in 1:length(listGenes[,1])) {
@@ -80,12 +79,16 @@ shinyServer(function(input, output) {
             }
             dev.off()
           }
+          v
+        })
   
         output$sra=DT::renderDataTable(DT::datatable(
           {
-          exp = counts()
-          colnames(exp) = c(SRA1,SRA2)
-          exp
+            SRA1 = input$SRRcode1
+            SRA2 = input$SRRcode2
+            exp = counts()
+            colnames(exp) = c(SRA1,SRA2)
+            exp
           })
         )
         output$dotPlot <- renderPlotly({
