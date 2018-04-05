@@ -43,7 +43,7 @@ shinyServer(function(input, output) {
           system(paste0('samtools view -S -b sam_mouse2.sam > sam_mouse2.bam'))
           
           #### Count reads with Rsubread ####
-          GTF = '/home/ubuntu/Mus_musculus.GRCm38.91.gtf'
+          GTF = '/home/ubuntu/GCF_000001635.26_GRCm38.p6_genomic.gff'
           system(paste0('/home/ubuntu/subread-1.6.0-Linux-x86_64/bin/featureCounts -t exon -g gene -a ',GTF,' -o counts1.txt sam_mouse1.bam'))
           system(paste0('/home/ubuntu/subread-1.6.0-Linux-x86_64/bin/featureCounts -t exon -g gene -a ',GTF,' -o counts2.txt sam_mouse2.bam'))
           
